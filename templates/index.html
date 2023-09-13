@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predcition For Test Results</title>
+    <title>Upload File</title>
+    <h1 style="margin-top: 35px;">Prediction For Test Results</h1>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+            text-align: center;
+            background-image: url("paper.gif")
+        }
+
+        .upload-form {
+            max-width: 400px;
+            margin:-50px auto 0;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .btn {
+            border: 2px solid gray;
+            color: gray;
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .btn:hover {
+            background-color: #f1f1f1;
+        }
+
+        .file-label {
+            font-size: 20px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .predict-btn {
+            color: blueviolet;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .predict-btn:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .bg-container {
+            background-image: url('your_image_url_here.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-container">
+        <div class="container upload-form">
+            <h1>Upload Test File</h1>
+            <form action="/predict" method="post" enctype="multipart/form-data">
+                <div class="upload-btn-wrapper">
+                    <button class="btn">Upload a file</button>
+                    <input type="file" name="file_path" accept=".csv" required>
+                </div>
+                <div class="file-label" id="file-label">No file chosen</div>
+               
+                <button type="submit" class="btn predict-btn">Predict</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('input[type="file"]').addEventListener('change', function() {
+            let fileName = this.value.split('\\').pop();
+            document.getElementById('file-label').textContent = fileName ? fileName : 'No file chosen';
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

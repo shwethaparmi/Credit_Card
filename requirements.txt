@@ -1,0 +1,11 @@
+numpy
+pandas
+Flask
+scikit-learn
+seaborn
+xlrd == 2.0.1
+xgboost
+openpyxl
+imblearn
+imbalanced-learn==0.11.0
+-e .
